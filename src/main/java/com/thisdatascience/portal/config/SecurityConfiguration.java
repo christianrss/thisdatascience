@@ -28,7 +28,10 @@ public class SecurityConfiguration {
 				.sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(req -> {
 					req.requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll();
+					req.requestMatchers(HttpMethod.GET, "/api/v1/posts/all").permitAll();
+					req.requestMatchers(HttpMethod.GET, "/api/v1/posts/{slug}").permitAll();
 					req.anyRequest().authenticated();
+					//req.anyRequest().permitAll();
 					//req.requestMatchers(HttpMethod.POST).permitAll();
 				})
 				.authenticationProvider(authenticationProvider)

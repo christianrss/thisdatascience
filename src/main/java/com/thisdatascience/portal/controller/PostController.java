@@ -9,17 +9,22 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/v1/posts")
 public class PostController {
 	@Autowired
 	private PostRepository repository;
 	
-	@GetMapping("/")
+	@GetMapping("/all")
 	public List<PostModel> getPosts() {
 		return repository.findAll();
 	}
+
+	@GetMapping("/{slug}")
+	public PostModel getPost(@PathVariable String slug) {
+		return repository.findBySlug(slug);
+	}
 	
-	@GetMapping("/{id}")
+	@PostMapping("/create")
 	public PostModel createPost(@RequestBody PostModel post) {
 		return repository.save(post);
 	}

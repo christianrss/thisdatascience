@@ -4,6 +4,7 @@ import java.util.UUID;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

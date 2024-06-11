@@ -34,7 +34,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		final String userEmail;
 		
 		if (authHeader == null || !authHeader.startsWith("Bearer")) {
-			System.out.println("passou aqui");
 			filterChain.doFilter(request, response);
 			return;
 		} else {
