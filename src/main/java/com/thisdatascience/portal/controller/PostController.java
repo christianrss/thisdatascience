@@ -1,6 +1,6 @@
 package com.thisdatascience.portal.controller;
 
-import com.thisdatascience.portal.model.PostModel;
+import com.thisdatascience.portal.model.Post;
 import com.thisdatascience.portal.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,22 +15,22 @@ public class PostController {
 	private PostRepository repository;
 	
 	@GetMapping("/all")
-	public List<PostModel> getPosts() {
+	public List<Post> getPosts() {
 		return repository.findAll();
 	}
 
 	@GetMapping("/{slug}")
-	public PostModel getPost(@PathVariable String slug) {
+	public Post getPost(@PathVariable String slug) {
 		return repository.findBySlug(slug);
 	}
 	
 	@PostMapping("/create")
-	public PostModel createPost(@RequestBody PostModel post) {
+	public Post createPost(@RequestBody Post post) {
 		return repository.save(post);
 	}
 	
 	@PutMapping("/{id}")
-	public Optional<PostModel> updatePost(@PathVariable Long id, @RequestBody PostModel post) {
+	public Optional<Post> updatePost(@PathVariable Long id, @RequestBody Post post) {
 		return Optional.ofNullable(repository.findById(id).map(t -> {
 			t.setTitle(post.getTitle());
 			t.setDescription(post.getDescription());

@@ -22,6 +22,7 @@ public class PersistenceJPAConfig {
 	@Bean
    	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		return entityManagerFactory;
+		
    	}
    
 	@Bean

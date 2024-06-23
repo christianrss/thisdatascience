@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thisdatascience.jpa.PersistenceJPAConfig;
 import com.thisdatascience.portal.config.JwtService;
-import com.thisdatascience.portal.model.UserModel;
+import com.thisdatascience.portal.model.User;
 import com.thisdatascience.portal.repository.UserRepository;
 import com.thisdatascience.portal.role.UserRole;
 
@@ -32,7 +32,7 @@ public class AuthenticationService {
 	
 	public AuthenticationResponse register(RegisterRequest request)
 	{
-		var user = UserModel.builder()
+		var user = User.builder()
 				.firstName(request.getFirstName())
 				.lastName(request.getLastName())
 				.email(request.getEmail())

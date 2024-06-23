@@ -5,8 +5,8 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.thisdatascience.portal.model.UserModel;
+import com.thisdatascience.portal.model.User;
 
-public interface UserRepository extends JpaRepository<UserModel, UUID> {
-	Optional<UserModel> findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, UUID> {
+	Optional<User> findByEmail(String email);
 }

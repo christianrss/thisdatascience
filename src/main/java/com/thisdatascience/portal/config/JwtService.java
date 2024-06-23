@@ -8,6 +8,8 @@ import java.util.function.Function;
 
 import javax.crypto.SecretKey;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,8 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 	
-	private static final String SECRET_KEY = "e9ca8f7ec106ad74836452aa580a1d664c240230cb90670cdba8fe7613d16fc7";
+	@Autowired
+	private Environment env;
 	
 	public String extractUsername(String token) {
 		return extractClaim(token, Claims::getSubject);
@@ -68,7 +71,8 @@ public class JwtService {
 	}
 	
 	private SecretKey getSignInKey() {
-		SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
+		final String secretKey = env.getProperty("site.secret-key");
+		SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 		return key;
 	}
 }

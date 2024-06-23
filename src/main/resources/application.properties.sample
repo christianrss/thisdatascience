@@ -2,6 +2,8 @@ server.port=8080
 spring.application.name=portal
 spring.profiles.active=development
 
+site.secret-key=
+
 #server.servlet.context-path=/resource-server#
 spring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:8083/auth/realms/thisdatascience
 spring.security.oauth2.resourceserver.jwt.set-uri=http://localhost:8083/auth/realms/thisdatascience/protocol/openid-connect/certs
